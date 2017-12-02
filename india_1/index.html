@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>map 1 | Based on OpenStreetMap India</title>
+  <meta name="description" content="OpenStreetMap India
+">
+
+  <link rel="stylesheet" href="/css/main.css">
+
+
+    <!-- Choose correct map libraries for standard or GL map -->
+  
+    <script src='https://api.tiles.mapbox.com/mapbox.js/v2.3.0/mapbox.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox.js/v2.3.0/mapbox.css' rel='stylesheet' />
+    <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-hash/v0.2.1/leaflet-hash.js'></script>
+
+  
+</head>
+
+
+  <body>
+
+    <header class="osm-header">
+
+    <h1 class="osm-logo">
+        <picture>
+          <source srcset="/assets/osm_logo_india.svg" type="image/svg+xml">
+          <img srcset="/assets/osm_logo_india.svg" alt="OpenStreetMap India logo" class="logo" src="/assets/osm_logo.png">
+        </picture>
+        <a href="/">OpenStreetMap.in</a>
+    </h1>
+
+    <div class="burger-menu-trigger">
+      <div class="one"></div>
+      <div class="two"></div>
+      <div class="three"></div>
+    </div>
+
+    <nav class="osm-header__links">
+      <ul class="osm-header__links__menu">
+        <li>
+          <a href='/demo/'>GL Demo</a>
+        </li>
+        <li>
+          <a href='/events'>Events</a>
+        </li>
+        <li>
+          <a href='/data/'>Data</a>
+        </li>
+        <li>
+          <a href='/about/'>About</a>
+        </li>
+      </ul>
+    </nav>
+
+
+</header>
+
+
+
+        <section class="map-container raster">
+
+  <div id='map'></div>
+
+</section>
+<a href="http://www.openstreetmap.org/edit" title="Edit OSM" class="edit-map"> Edit map </a>
+<script>
+    // Lock to India bounds
+    var southWest = L.latLng(7.319, 61.523),
+        northEast = L.latLng(36.774, 100.635),
+        bounds = L.latLngBounds(southWest, northEast);
+
+    // Provide your access token
+    L.mapbox.accessToken = 'pk.eyJ1Ijoib3BlbnN0cmVldG1hcCIsImEiOiJhNVlHd29ZIn0.ti6wATGDWOmCnCYen-Ip7Q';
+
+    // Definte tile urls of each layer
+    var indiaMap = L.mapbox.tileLayer('openstreetmap.1b68f018'),
+        bhuvanSatellite = L.tileLayer('http://tile1.nrsc.gov.in/tilecache/tilecache.py/1.0.0/bhuvan_imagery2/{z}/{x}/{y}.jepg', {
+            attribution: 'NRSC/ISRO'
+        }),
+        postalMap = L.mapbox.tileLayer('planemad.9acc2036'),
+        // truemarbleSatellite = L.mapbox.tileLayer('planemad.e76fee83'),
+        highwaysMap = L.mapbox.tileLayer('planemad.66359ac0'),
+        connectivityGraph = L.mapbox.tileLayer('planemad.5504651b'),
+        railwayMap = L.mapbox.tileLayer('planemad.e5dd1290');
+
+    var baseLayers = {
+        "Railway Map": railwayMap,
+        "Bhuvan Satellite": bhuvanSatellite,
+        // "NASA Satellite": truemarbleSatellite,
+        "OpenStreetMap India": indiaMap
+    };
+
+    var overlayMaps = {
+        "Highway": highwaysMap,
+        "Postal Codes": postalMap,
+        "Connectivity": connectivityGraph
+    };
+
+    // Create a map in the div #map
+    var map = L.map('map', {
+            layers: indiaMap
+        }, {
+            maxBounds: bounds,
+
+        })
+        .addControl(L.mapbox.geocoderControl('mapbox.places', {
+            autocomplete: true
+        }))
+        .setView([22.14980, 79.08060], 5);
+
+    L.hash(map);
+
+
+    //Add layer control
+    L.control.layers(baseLayers, overlayMaps, {
+        position: 'topleft'
+    }).addTo(map);
+</script>
+
+
+
+    <!-- <footer>
+<ul class="links">
+        <li>
+           
+        </li>
+    </ul>
+</footer> -->
+ <!-- Addons -->
+  <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script>
+  $( document ).ready(function() {
+    $('.burger-menu-trigger').click(function(){
+      $(this).toggleClass('is-active');
+      $('.osm-header__links__menu').toggleClass('is-open');
+    });
+});
+</script>
+
+
+  </body>
+
+</html>
