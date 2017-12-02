@@ -1,4 +1,5 @@
-
+<html>
+    
     <script src='https://api.tiles.mapbox.com/mapbox.js/v2.3.0/mapbox.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox.js/v2.3.0/mapbox.css' rel='stylesheet' />
     <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-hash/v0.2.1/leaflet-hash.js'></script>
@@ -14,8 +15,8 @@
         northEast = L.latLng(36.774, 100.635),
         bounds = L.latLngBounds(southWest, northEast);
 
-    // Provide your access token
-    L.mapbox.accessToken = 'pk.eyJ1Ijoib3BlbnN0cmVldG1hcCIsImEiOiJhNVlHd29ZIn0.ti6wATGDWOmCnCYen-Ip7Q';
+    // My access token
+    L.mapbox.accessToken = 'pk.eyJ1IjoicnQxeXJydTEiLCJhIjoiY2phcHQ1bWJiMHNleDJ4cWszanV2dDdjYSJ9.QIMwg3A6dG34rF8KorXewQ';
 
     // Definte tile urls of each layer
     var indiaMap = L.mapbox.tileLayer('openstreetmap.1b68f018'),
