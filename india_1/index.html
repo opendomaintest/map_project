@@ -8,8 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>map 1 | Based on OpenStreetMap India</title>
-  <meta name="description" content="OpenStreetMap India
-">
+  <meta name="description" content="OpenStreetMap India">
 
   <link rel="stylesheet" href="/css/main.css">
 
@@ -25,46 +24,7 @@
 
 
   <body>
-
-    <header class="osm-header">
-
-    <h1 class="osm-logo">
-        <picture>
-          <source srcset="/assets/osm_logo_india.svg" type="image/svg+xml">
-          <img srcset="/assets/osm_logo_india.svg" alt="OpenStreetMap India logo" class="logo" src="/assets/osm_logo.png">
-        </picture>
-        <a href="/">OpenStreetMap.in</a>
-    </h1>
-
-    <div class="burger-menu-trigger">
-      <div class="one"></div>
-      <div class="two"></div>
-      <div class="three"></div>
-    </div>
-
-    <nav class="osm-header__links">
-      <ul class="osm-header__links__menu">
-        <li>
-          <a href='/demo/'>GL Demo</a>
-        </li>
-        <li>
-          <a href='/events'>Events</a>
-        </li>
-        <li>
-          <a href='/data/'>Data</a>
-        </li>
-        <li>
-          <a href='/about/'>About</a>
-        </li>
-      </ul>
-    </nav>
-
-
-</header>
-
-
-
-        <section class="map-container raster">
+  <section class="map-container raster">
 
   <div id='map'></div>
 
@@ -124,25 +84,6 @@
     }).addTo(map);
 </script>
 
-
-
-    <!-- <footer>
-<ul class="links">
-        <li>
-           
-        </li>
-    </ul>
-</footer> -->
- <!-- Addons -->
-  <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
-<script>
-  $( document ).ready(function() {
-    $('.burger-menu-trigger').click(function(){
-      $(this).toggleClass('is-active');
-      $('.osm-header__links__menu').toggleClass('is-open');
-    });
-});
-</script>
 
 
   </body>
